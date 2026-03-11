@@ -32,7 +32,6 @@ class SRS:
     projeto: str
     versao: str
     descricao: str
-    resultads : str
     requisitos_funcionais: List[RequisitoFuncional] = field(default_factory=list)
     requisitos_nao_funcionais: List[RequisitoNaoFuncional] = field(default_factory=list)
 
@@ -55,6 +54,13 @@ class SRS:
             print(f"  [{rf.id}] {rf.nome} — Prioridade: {rf.prioridade.value}")
             print(f"       Ator: {rf.ator}")
             print(f"       📌 {rf.descricao}\n")
+            
+            # Validar requisito
+            validacao = validar_requisito(rf)
+            print(f"       ✅ Validação:")
+            print(f"          • Descrição válida (>20 caracteres): {validacao['descricao_valida']}")
+            print(f"          • Pré-condição definida: {validacao['pre_condicao_valida']}")
+            print(f"          • Critério mensurável (com números): {validacao['criterio_mensuravel']}\n")
 
         print(f"⚡ REQUISITOS NÃO-FUNCIONAIS ({len(self.requisitos_nao_funcionais)})")
         for rnf in self.requisitos_nao_funcionais:
@@ -62,15 +68,21 @@ class SRS:
             print(f"       📌 {rnf.descricao}")
             print(f"       ✔️  Critério: {rnf.criterio_aceitacao}\n")
     
-   # def validar_requisito(rf: RequisitoFuncional) -> dict:
+ 
+
+def validar_requisito(rf: RequisitoFuncional) -> dict:
+    """
+    Valida se um requisito funcional segue as boas práticas.
+    Retorna um dict com os resultados da validação.
+    """
+    resultados = {
+        "descricao_valida": len(rf.descricao) > 20,
+        "pre_condicao_valida": rf.pre_condicao != "",
+        "criterio_mensuravel": any(char.isdigit() for char in rf.descricao)
+    }
     
-   # resultados = {}
-    
-    # Dica 1: len(rf.descricao) > 20
-    # Dica 2: rf.pre_condicao != ""
-    # Dica 3: any(char.isdigit() for char in rf.descricao)
-    
-   # return resultados
+    return resultados
+
 
 # ---- Criando o SRS do App de Delivery ----
 srs = SRS(
