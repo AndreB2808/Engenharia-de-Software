@@ -11,6 +11,5 @@ O sistema do serviço GetLab seria interligado ao banco de dados da FIAP para as
 
 ## 🗂️ Estrutura do Projeto
 
-## 🧩 Funcionalidades Implementadas
-## 📸 Demonstração (prints / GIFs / link para vídeo) obrigatorio
-## 🔗 Links (Miro, repositório, vídeo)
+## 📹 Demonstração (prints / GIFs / link para vídeo) obrigatorio
+## 📑 Documentos (Miro, repositório, vídeo)
