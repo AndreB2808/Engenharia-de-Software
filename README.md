@@ -1,4 +1,4 @@
-# Projeto GetLab
+# Projeto GetLab 🏫
 
 ## ⛓️‍💥 Descrição do Problema
 A FIAP fornece disponibilidade aos alunos para poderem reservar salas e laboratórios para fins de estudo e aprendizado fora do horário de aula, desde que a sala esteja disponível para reservar. Mas e se um aluno decidir reservar uma sala, ir até a pessoa responsável pela reserva de salas e descobrir de última hora que a sala que ele desejava utilizar já foi reservada por outro aluno? Com isso vem a proposta do projeto GetLab.
