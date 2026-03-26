@@ -1,0 +1,16 @@
+{
+  "salas": [
+    {"id": "708", "nome": "Sala 708"},
+    {"id": "709", "nome": "Sala 709"}
+  ],
+  "reservas": [
+    {
+      "usuario": "Pedro",
+      "sala": "708",
+      "data": "2026-03-27",
+      "hora_inicio": "14:00",
+      "hora_fim": "16:00",
+      "status": "ativa"
+    }
+  ]
+}
