@@ -7,18 +7,20 @@ A FIAP fornece disponibilidade aos alunos para poderem reservar salas e laborat�
  O serviço GetLab seria uma simples aplicação integrada aos serviços de Website e Mobile da FIAP, que seria um jeito simples de fazer a reserva de laboratórios com antecedencia e sem imprevistos. Ele informaria os usuários sobre quais salas estariam disponíveis para reserva, além das salas já reservadas junto do horário e dia da tal reserva. Após o usuário escolher a reserva, o sistema atualizaria para os outros usuários quanto a reserva feita. Após feita uma reserva, o mesmo usuário não pode realizar outra até que o tenha se passado o horário reservado, ou então caso o usuário tenha cancelado com até 5 horas de antecedência.
 
 ## 🖥️ Tecnologias Necessárias
- O sistema do serviço GetLab seria interligado ao banco de dados da FIAP para assim fazer a checagem de salas disponíveis para reserva e também de salas já reservadas por outras pessoas. O sistema faria a checagem assim que o usuário acessasse o serviço, fazendo a coleta dos dados para mostrar ao usuário as salas disponíveis e salas já reservadas. Após a reserva ser confirmada, o banco de dados seria atualizado com a reserva feita pelo usuário.
+ O sistema do serviço GetLab seria interligado ao banco de dados da FIAP para assim fazer a checagem de salas disponíveis para reserva e também de salas já reservadas por outras pessoas. O sistema faria a checagem assim que o usuário acessasse o serviço, fazendo a coleta dos dados para mostrar ao usuário as salas disponíveis e salas já reservadas. Após a reserva ser confirmada, o banco de dados seria atualizado com a reserva feita pelo usuário. Para a prototipagem será utilizada de um arquivo "reservas.json" para ser utilizado como banco de dados desse sitema, assim possibilitando a simulação de coleta e armazenamento de dados.
 
 ## 🗂️ Estrutura do Projeto
+```
 Engenharia-De-Software/tree/Projeto-GetLab/
 ├── main.py
 ├── data.json
 └── README.md
+```
 
 ## 📹 Demonstração (prints / GIFs / link para vídeo) obrigatorio
 
 
 ## 📑 Documentos (Miro, repositório, vídeo)
-▶️ Quadro no Miro - https://miro.com/app/board/uXjVGrmeQUI=/ share_link_id=98905533921
+▶️ Quadro no Miro - https://miro.com/app/board/uXjVGrmeQUI=/?share_link_id=820200413870
 
 ▶️ Caminho do repositório atual - https://github.com/AndreB2808/Engenharia-de-Software/tree/Projeto-GetLab
