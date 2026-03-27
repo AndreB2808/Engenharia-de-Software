@@ -11,9 +11,9 @@ A FIAP fornece disponibilidade aos alunos para poderem reservar salas e laborat�
 
 ## 🗂️ Estrutura do Projeto
 Engenharia-De-Software/tree/Projeto-GetLab/
-├── main.py
-├── data.json
-└── README.md
+\├── main.py
+\├── data.json
+\└── README.md
 
 ## 📹 Demonstração (prints / GIFs / link para vídeo) obrigatorio
 
