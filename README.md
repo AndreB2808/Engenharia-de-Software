@@ -17,6 +17,9 @@ Engenharia-De-Software/tree/Projeto-GetLab/
 └── README.md
 ```
 
+## 🔌 Como Executar
+Para usar o protótipo, basta garantir que ambos os arquivos "main.py" e "reservas.json" estão no mesmo local do dispositivo, e então fazer a execução do arquivo "main.py" como arquivo Python, assim o terminal executará o programa e será possível interagir com ele pelo próprio terminal.
+
 ## 📹 Demonstração (prints / GIFs / link para vídeo) obrigatorio
 
 
