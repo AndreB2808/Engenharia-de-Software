@@ -1,4 +1,8 @@
 {
-  "salas_reservadas": [1501, 2204],
-  "reservadores": ["teste"]
+  "reservas": [
+    {
+      "usuario": "teste",
+      "sala": 1501
+    }
+  ]
 }
