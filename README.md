@@ -36,9 +36,9 @@ Para usar o protótipo, basta garantir que ambos os arquivos "main.py" e "reserv
 - Inicialização do protótipo e listagem das salas
 ![](gifs/gif1.gif)
 - Processo de reserva de sala e consulta de reserva
-
+![](gifs/gif2.gif)
 - Cancelamento de reserva e encerramento
-
+![](gifs/gif3.gif)
 ## 📑 Documentos (Miro, repositório, vídeo)
 ▶️ Quadro no Miro - https://miro.com/app/board/uXjVGrmeQUI=/?share_link_id=820200413870
 
