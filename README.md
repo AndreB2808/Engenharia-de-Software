@@ -19,6 +19,6 @@ Engenharia-De-Software/tree/Projeto-GetLab/
 
 
 ## 📑 Documentos (Miro, repositório, vídeo)
-▶️ Quadro no Miro - https://miro.com/app/board/uXjVGrmeQUI=/ share_link_id=98905533921
+▶️ Quadro no Miro - https://miro.com/app/board/uXjVGrmeQUI=/?share_link_id=820200413870
 
 ▶️ Caminho do repositório atual - https://github.com/AndreB2808/Engenharia-de-Software/tree/Projeto-GetLab
