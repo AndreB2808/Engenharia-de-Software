@@ -34,7 +34,7 @@ Para usar o protótipo, basta garantir que ambos os arquivos "main.py" e "reserv
 
 ## 📹 Demonstração
 - Inicialização do protótipo e listagem das salas
-![Demonstração do GetLab](gifs/gif1.gif)
+!(gifs/gif1.gif)
 - Processo de reserva de sala e consulta de reserva
 
 - Cancelamento de reserva e encerramento
