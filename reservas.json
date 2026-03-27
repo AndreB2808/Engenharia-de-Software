@@ -1,8 +1,20 @@
 {
-  "reservas": [
-    {
-      "usuario": "teste",
-      "sala": 1501
-    }
-  ]
+    "reservas": [
+        {
+            "usuario": "Leteste",
+            "sala": 1501
+        },
+        {
+            "usuario": "João",
+            "sala": 2201
+        },
+        {
+            "usuario": "Beto",
+            "sala": 2703
+        },
+        {
+            "usuario": "Leto",
+            "sala": 1508
+        }
+    ]
 }
