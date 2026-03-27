@@ -10,10 +10,12 @@ A FIAP fornece disponibilidade aos alunos para poderem reservar salas e laborat�
  O sistema do serviço GetLab seria interligado ao banco de dados da FIAP para assim fazer a checagem de salas disponíveis para reserva e também de salas já reservadas por outras pessoas. O sistema faria a checagem assim que o usuário acessasse o serviço, fazendo a coleta dos dados para mostrar ao usuário as salas disponíveis e salas já reservadas. Após a reserva ser confirmada, o banco de dados seria atualizado com a reserva feita pelo usuário.
 
 ## 🗂️ Estrutura do Projeto
+```
 Engenharia-De-Software/tree/Projeto-GetLab/
-\├── main.py
-\├── data.json
-\└── README.md
+├── main.py
+├── data.json
+└── README.md
+```
 
 ## 📹 Demonstração (prints / GIFs / link para vídeo) obrigatorio
 
