@@ -10,14 +10,43 @@ def txt_reserva():
 
 def carregar_dados():
     if not os.path.exists(ARQUIVO_DADOS):
-        return {"reservas": []}
+        print("⚠ Arquivo reservas.json não encontrado!")
+        print("→ Criando arquivo padrão...")
 
-    with open(ARQUIVO_DADOS, "r") as f:
-        dados = json.load(f)
+        dados_iniciais = {"reservas": []}
 
-    # Compatibilidade com formatos antigos de dados.
+        with open(ARQUIVO_DADOS, "w") as f:
+            json.dump(dados_iniciais, f, indent=4)
+
+        print("✔ Arquivo reservas.json criado com sucesso!")
+        return dados_iniciais
+
+    try:
+        with open(ARQUIVO_DADOS, "r") as f:
+            dados = json.load(f)
+    except json.JSONDecodeError:
+        print("⚠ Erro ao ler reservas.json (arquivo corrompido)")
+        print("→ Resetando arquivo...")
+
+        dados = {"reservas": []}
+
+        with open(ARQUIVO_DADOS, "w") as f:
+            json.dump(dados, f, indent=4)
+
+        print("✔ Arquivo corrigido!")
+        return dados
+
+    # Garantir estrutura correta
     if "reservas" not in dados:
+        print("⚠ Estrutura inválida detectada")
+        print("→ Corrigindo estrutura do arquivo...")
+
         dados["reservas"] = []
+
+        with open(ARQUIVO_DADOS, "w") as f:
+            json.dump(dados, f, indent=4)
+
+        print("✔ Estrutura corrigida!")
 
     return dados
 
@@ -111,7 +140,7 @@ def getlab(nome: str, opcao: str) -> str:
                 "sala": sala
             })
             salvar_dados({"reservas": reservas})
-            print(f"✔ Reserva realizada para sala {sala} no nome de{nome}!")
+            print(f"✔ Reserva realizada para sala {sala} no nome de {nome}!")
             time.sleep(2)
             print(txt_reserva())
             return
@@ -140,7 +169,7 @@ def getlab(nome: str, opcao: str) -> str:
 
             escolha = input("→ Deseja cancelar? (s/n): ")
 
-            if escolha == "s":
+            if escolha.lower() == "s":
                 loading_fake(3)
                 reservas.remove(reserva)
                 salvar_dados({"reservas": reservas})
@@ -148,7 +177,7 @@ def getlab(nome: str, opcao: str) -> str:
             else:
                 print("✗ Cancelamento abortado.")
         else:
-            print("→ Você não possui reserva.")
+            print("✗ Você não possui reserva ativa.")
 
         time.sleep(2)
         print(txt_reserva())
