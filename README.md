@@ -20,8 +20,24 @@ Engenharia-De-Software/tree/Projeto-GetLab/
 ## 🔌 Como Executar
 Para usar o protótipo, basta garantir que ambos os arquivos "main.py" e "reservas.json" estão no mesmo local do dispositivo, e então fazer a execução do arquivo "main.py" como arquivo Python, assim o terminal executará o programa e será possível interagir com ele pelo próprio terminal.
 
-## 📹 Demonstração (prints / GIFs / link para vídeo) obrigatorio
+## 🪢 Funcionalidades Implementadas
 
+- ✔ Listagem de todas as salas com indicação de status (Disponível / Reservada)
+- ✔ Funcionalidade de reservar sala e armazenar nos dados
+- ✔ Bloqueio de múltiplas reservas por usuário
+- ✔ Bloqueio de reserva em salas já ocupadas
+- ✔ Consulta da reserva ativa do usuário
+- ✔ Cancelamento de reserva com confirmação do usuário
+- ✔ Persistência de dados utilizando um arquivo JSON ("reservas.json")
+- ✔ Tratamento de erros ou ausência do arquivo JSON
+- ✔ Interface simples e prática via terminal
+
+## 📹 Demonstração
+- Inicialização do protótipo e listagem das salas
+
+- Processo de reserva de sala e consulta de reserva
+
+- Cancelamento de reserva e encerramento
 
 ## 📑 Documentos (Miro, repositório, vídeo)
 ▶️ Quadro no Miro - https://miro.com/app/board/uXjVGrmeQUI=/?share_link_id=820200413870
