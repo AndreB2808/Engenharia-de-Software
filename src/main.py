@@ -3,7 +3,7 @@ import sys
 import json
 import os
 
-ARQUIVO_DADOS = "reservas.json"
+ARQUIVO_DADOS = "data/reservas.json"
 
 def txt_reserva():
     return "\n<==Favor selecionar a opção desejada==>"
