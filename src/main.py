@@ -2,27 +2,29 @@ import time
 import sys
 import json
 import os
+from auth.cadastro import cadastrar
+from auth.login import login
 
-ARQUIVO_DADOS = "data/reservas.json"
+ARQUIVO_RESERVAS = "data/reservas.json"
 
 def txt_reserva():
     return "\n<==Favor selecionar a opção desejada==>"
 
 def carregar_dados():
-    if not os.path.exists(ARQUIVO_DADOS):
+    if not os.path.exists(ARQUIVO_RESERVAS):
         print("⚠ Arquivo reservas.json não encontrado!")
         print("→ Criando arquivo padrão...")
 
         dados_iniciais = {"reservas": []}
 
-        with open(ARQUIVO_DADOS, "w") as f:
+        with open(ARQUIVO_RESERVAS, "w") as f:
             json.dump(dados_iniciais, f, indent=4)
 
         print("✔ Arquivo reservas.json criado com sucesso!")
         return dados_iniciais
 
     try:
-        with open(ARQUIVO_DADOS, "r") as f:
+        with open(ARQUIVO_RESERVAS, "r") as f:
             dados = json.load(f)
     except json.JSONDecodeError:
         print("⚠ Erro ao ler reservas.json (arquivo corrompido)")
@@ -30,7 +32,7 @@ def carregar_dados():
 
         dados = {"reservas": []}
 
-        with open(ARQUIVO_DADOS, "w") as f:
+        with open(ARQUIVO_RESERVAS, "w") as f:
             json.dump(dados, f, indent=4)
 
         print("✔ Arquivo corrigido!")
@@ -43,7 +45,7 @@ def carregar_dados():
 
         dados["reservas"] = []
 
-        with open(ARQUIVO_DADOS, "w") as f:
+        with open(ARQUIVO_RESERVAS, "w") as f:
             json.dump(dados, f, indent=4)
 
         print("✔ Estrutura corrigida!")
@@ -51,7 +53,7 @@ def carregar_dados():
     return dados
 
 def salvar_dados(dados):
-    with open(ARQUIVO_DADOS, "w") as f:
+    with open(ARQUIVO_RESERVAS, "w") as f:
         json.dump(dados, f, indent=4)
 
 salas = [1501, 1502, 1504, 1508, 1701, 1703, 1704, 
@@ -197,10 +199,23 @@ def getlab(nome: str, opcao: str) -> str:
 
 print("▶ Iniciando serviço GetLab")
 loading_fake(2)
-user = input("Favor inserir nome de usuário: ")
+usuario_logado = None
+
+while usuario_logado is None:
+    print("\n1 - Login")
+    print("2 - Cadastro")
+    escolha = input("Escolha: ")
+
+    if escolha == "1":
+        usuario_logado = login()
+    elif escolha == "2":
+        cadastrar()
+    else:
+        print("Opção inválida")
+
 loading_fake(1)
 print("\n===== GETLAB =====\n")
-print(f"Bem vindo, {user}!")
+print(f"Bem vindo, {usuario_logado}!")
 rodando = True
 print(txt_reserva())
 while rodando:
@@ -210,6 +225,6 @@ while rodando:
     print("4- Cancelar reserva ativa")
     print("5- Encerrar serviço")
     opcao = input("Escolha: ")
-    resposta = getlab(user, opcao)
+    resposta = getlab(usuario_logado, opcao)
     if resposta == False:
         rodando = False
