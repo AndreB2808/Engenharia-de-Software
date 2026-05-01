@@ -71,6 +71,7 @@ A FIAP fornece disponibilidade aos alunos para poderem reservar salas e laborat�
 - Cancelamento de reserva
 ![](gifs/gif3.gif)
 - Demonstração do tema Light/Dark
+  
 ![](gifs/LD1.gif)
 ![](gifs/LD2.gif)
 
