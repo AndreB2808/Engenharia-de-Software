@@ -1,230 +1,279 @@
-import time
-import sys
+import streamlit as st
 import json
 import os
-from auth.cadastro import cadastrar
-from auth.login import login
+import html
 
-ARQUIVO_RESERVAS = "data/reservas.json"
+from models.reserva_model import (
+    carregar_reservas,
+    usuario_tem_reserva,
+    reservar_sala,
+    cancelar_reserva,
+    exportar_reservas_csv,
+    garantir_arquivo,
+    SALAS
+)
 
-def txt_reserva():
-    return "\n<==Favor selecionar a opção desejada==>"
+from views.interface_view import (
+    render_box,
+    aplicar_tema
+)
 
-def carregar_dados():
-    if not os.path.exists(ARQUIVO_RESERVAS):
-        print("⚠ Arquivo reservas.json não encontrado!")
-        print("→ Criando arquivo padrão...")
+st.set_page_config(page_title="GetLab", page_icon="🏫", layout="centered")
 
-        dados_iniciais = {"reservas": []}
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+ARQUIVO_USUARIOS = os.path.join(BASE_DIR, "data", "usuarios.json")
+ARQUIVO_RESERVAS = os.path.join(BASE_DIR, "data", "reservas.json")
 
-        with open(ARQUIVO_RESERVAS, "w") as f:
-            json.dump(dados_iniciais, f, indent=4)
+if "tema" not in st.session_state:
+    st.session_state.tema = "light"
 
-        print("✔ Arquivo reservas.json criado com sucesso!")
-        return dados_iniciais
+if "usuario" not in st.session_state:
+    st.session_state.usuario = None
 
-    try:
-        with open(ARQUIVO_RESERVAS, "r") as f:
-            dados = json.load(f)
-    except json.JSONDecodeError:
-        print("⚠ Erro ao ler reservas.json (arquivo corrompido)")
-        print("→ Resetando arquivo...")
+if "auth_mode" not in st.session_state:
+    st.session_state.auth_mode = "Login"
 
-        dados = {"reservas": []}
+if "menu_secao" not in st.session_state:
+    st.session_state.menu_secao = "Listar salas"
 
-        with open(ARQUIVO_RESERVAS, "w") as f:
-            json.dump(dados, f, indent=4)
+if "flash" not in st.session_state:
+    st.session_state.flash = None
 
-        print("✔ Arquivo corrigido!")
-        return dados
 
-    # Garantir estrutura correta
-    if "reservas" not in dados:
-        print("⚠ Estrutura inválida detectada")
-        print("→ Corrigindo estrutura do arquivo...")
+def set_flash(tipo, mensagem):
+    st.session_state.flash = (tipo, mensagem)
 
-        dados["reservas"] = []
+def mostrar_flash():
+    if st.session_state.flash:
+        tipo, mensagem = st.session_state.flash
+        render_box(mensagem, tipo)
+        st.session_state.flash = None
 
-        with open(ARQUIVO_RESERVAS, "w") as f:
-            json.dump(dados, f, indent=4)
-
-        print("✔ Estrutura corrigida!")
-
+def carregar_usuarios():
+    dados = garantir_arquivo(ARQUIVO_USUARIOS, {"usuarios": []})
+    if "usuarios" not in dados or not isinstance(dados["usuarios"], list):
+        dados["usuarios"] = []
+        salvar_usuarios(dados)
     return dados
 
-def salvar_dados(dados):
-    with open(ARQUIVO_RESERVAS, "w") as f:
-        json.dump(dados, f, indent=4)
 
-salas = [1501, 1502, 1504, 1508, 1701, 1703, 1704, 
-         1706, 1710, 2201, 2202, 2203, 2204, 2301, 
-         2302, 2303, 2304, 2501, 2502, 2503, 2603, 
-         2701, 2702, 2703, 2704, 2801, 2802, 2803, 
-         2804, 2901, 2902, 2903]
-dados = carregar_dados()
-reservas = dados["reservas"]
+def salvar_usuarios(dados):
+    os.makedirs(os.path.dirname(ARQUIVO_USUARIOS), exist_ok=True)
+    with open(ARQUIVO_USUARIOS, "w", encoding="utf-8") as f:
+        json.dump(dados, f, indent=4, ensure_ascii=False)
 
-def loading_fake(duracao=2):
-    inicio = time.time()
-    estados = [".", "..", "..."]
-    i = 0
+def login_streamlit(rm, senha):
+    dados = carregar_usuarios()
+    rm = str(rm).strip()
+    senha = str(senha).strip()
 
-    while time.time() - inicio < duracao:
-        texto = estados[i % len(estados)]
-        sys.stdout.write("\r" + " " * 30)
-        sys.stdout.write("\r" + texto)
-        sys.stdout.flush()
-        time.sleep(0.25)
-        i += 1
-    sys.stdout.write("\r" + " " * 30 + "\r")
-    sys.stdout.flush()
+    for usuario in dados["usuarios"]:
+        if str(usuario.get("rm", "")).strip() == rm and str(usuario.get("senha", "")).strip() == senha:
+            return usuario.get("nome", "")
+    return None
 
-def getlab(nome: str, opcao: str) -> str:
-    
 
-    if opcao == "1":
-        print("\n→ Listando salas disponíveis...")
-        loading_fake(2)
-        print("→ Salas disponíveis:")
-        
+def cadastrar_streamlit(nome, rm, senha):
+    nome = str(nome).strip()
+    rm = str(rm).strip()
+    senha = str(senha).strip()
+
+    if not nome or not rm or not senha:
+        return False, "Preencha todos os campos."
+
+    if not rm.isdigit():
+        return False, "RM inválido. Use apenas números."
+
+    dados = carregar_usuarios()
+
+    if any(str(u.get("rm", "")).strip() == rm for u in dados["usuarios"]):
+        return False, "RM já cadastrado."
+
+    dados["usuarios"].append({
+        "nome": nome,
+        "rm": rm,
+        "senha": senha
+    })
+    salvar_usuarios(dados)
+    return True, "Cadastro realizado com sucesso."
+
+aplicar_tema()
+
+top1, top2, top3 = st.columns([1, 2, 8])
+
+with top1:
+    if st.button("🌓", use_container_width=True):
+        st.session_state.tema = "dark" if st.session_state.tema == "light" else "light"
+        st.rerun()
+
+with top2:
+    if st.session_state.usuario is not None:
+        if st.button("Logout", use_container_width=True):
+            st.session_state.usuario = None
+            st.session_state.menu_secao = "Listar salas"
+            st.rerun()
+
+st.markdown("<h1 style='text-align:center;'>🏫 GetLab</h1>", unsafe_allow_html=True)
+st.markdown("<p style='text-align:center;'>Sistema de reserva de laboratórios</p>", unsafe_allow_html=True)
+mostrar_flash()
+
+if st.session_state.usuario is None:
+    col_a, col_b, col_c = st.columns([1, 2, 1])
+    with col_b:
+        op1, op2 = st.columns(2)
+        with op1:
+            if st.button("Login", use_container_width=True):
+                st.session_state.auth_mode = "Login"
+                st.rerun()
+        with op2:
+            if st.button("Cadastro", use_container_width=True):
+                st.session_state.auth_mode = "Cadastro"
+                st.rerun()
+
+    if st.session_state.auth_mode == "Login":
+        col1, col2 = st.columns(2)
+
+        with col1:
+            rm = st.text_input("RM")
+
+        with col2:
+            senha = st.text_input("Senha", type="password")
+
+        if st.button("Entrar", use_container_width=True):
+            usuario = login_streamlit(rm, senha)
+            if usuario:
+                st.session_state.usuario = usuario
+                st.session_state.menu_secao = "Listar salas"
+                st.rerun()
+            else:
+                set_flash("error", "RM ou senha inválidos.")
+                st.rerun()
+
+    else:
+        nome = st.text_input("Nome")
+        rm = st.text_input("RM")
+        senha = st.text_input("Senha", type="password")
+
+        if st.button("Cadastrar", use_container_width=True):
+            ok, msg = cadastrar_streamlit(nome, rm, senha)
+            if ok:
+                set_flash("success", msg)
+                st.rerun()
+            else:
+                set_flash("error", msg)
+                st.rerun()
+
+else:
+    st.markdown(
+        f"<h3 style='text-align:center;'>Bem vindo, {st.session_state.usuario}!</h3>",
+        unsafe_allow_html=True
+    )
+
+    if "menu_secao" not in st.session_state:
+        st.session_state.menu_secao = "Listar salas"
+
+    linha1 = st.columns(3)
+    with linha1[0]:
+        if st.button("Listar salas", use_container_width=True):
+            st.session_state.menu_secao = "Listar salas"
+            st.rerun()
+    with linha1[1]:
+        if st.button("Reservar uma sala", use_container_width=True):
+            st.session_state.menu_secao = "Reservar uma sala"
+            st.rerun()
+    with linha1[2]:
+        if st.button("Consultar reserva ativa", use_container_width=True):
+            st.session_state.menu_secao = "Consultar reserva ativa"
+            st.rerun()
+
+    linha2 = st.columns([1, 2, 2, 1])
+    with linha2[1]:
+        if st.button("Cancelar reserva ativa", use_container_width=True):
+            st.session_state.menu_secao = "Cancelar reserva ativa"
+            st.rerun()
+    with linha2[2]:
+        if st.button("Exportar reservas CSV", use_container_width=True):
+            st.session_state.menu_secao = "Exportar reservas CSV"
+            st.rerun()
+
+    st.markdown("---")
+
+    menu = st.session_state.menu_secao
+
+    if menu == "Listar salas":
+
+        st.markdown("<h3 style='text-align:center;'>Salas disponíveis</h3>", unsafe_allow_html=True)
+
+        reservas = carregar_reservas()["reservas"]
+
+        salas = [
+            1501,1502,1504,1508,1701,1703,1704,
+            1706,1710,2201,2202,2203,2204,2301,
+            2302,2303,2304,2501,2502,2503,2603,
+            2701,2702,2703,2704,2801,2802,2803,
+            2804,2901,2902,2903
+        ]
+
+        st.markdown(
+            "<div style='display:flex; justify-content:center; gap:120px;'>"
+            "<b>SALA</b><b>STATUS</b>"
+            "</div>",
+            unsafe_allow_html=True
+        )
+
         for s in salas:
-            if any(r["sala"] == s for r in reservas):
-                status = "RESERVADA"
+            status = "⛔ RESERVADA" if any(r["sala"] == s for r in reservas) else "✅ DISPONÍVEL" 
+
+            st.markdown(
+                f"<div style='display:flex; justify-content:center; gap:120px;'>"
+                f"<span style='margin-left:52px;'>{s}</span>"
+                f"<span>{status}</span>"
+                f"</div>",
+                unsafe_allow_html=True
+            )
+
+    elif menu == "Reservar uma sala":
+        sala = st.selectbox("Escolha a sala", SALAS)
+
+        if st.button("Reservar", use_container_width=True):
+            ok, msg = reservar_sala(st.session_state.usuario, sala)
+            if ok:
+                set_flash("success", msg)
+                st.rerun()
             else:
-                status = "Disponível"
-            print(f"  - Sala {s} | {status}")
-        time.sleep(2)
-        print(txt_reserva())
-#-------------------------------------------------------------------------------------------------    
-    elif opcao == "2":
-        print("\n→ Processo de reserva iniciado...")
-        loading_fake(2)
+                set_flash("error", msg)
+                st.rerun()
 
-        # Bloquear múltiplas reservas
-        if any(r["usuario"] == nome for r in reservas):
-            print("✗ Você já possui uma reserva ativa!")
-            time.sleep(1)
-            print(txt_reserva())
-            return
-
-        while True:
-            entrada = input("→ Informe a sala desejada (ou 0 para cancelar): ")
-
-            try:
-                sala = int(entrada)
-            except ValueError:
-                print("✗ Entrada inválida! Digite apenas números.")
-                time.sleep(1)
-                continue
-
-            if sala == 0:
-                print("→ Processo de reserva cancelado.")
-                time.sleep(2)
-                print(txt_reserva())
-                return
-
-            # Sala existe?
-            if sala not in salas:
-                print("✗ Sala inválida!")
-                time.sleep(1)
-                continue
-
-            # Sala ocupada?
-            if any(r["sala"] == sala for r in reservas):
-                print("✗ Sala já está reservada!")
-                time.sleep(1)
-                continue
-            
-            print(f"→ Processando pedido de reserva")
-            loading_fake(3)
-            reservas.append({
-                "usuario": nome,
-                "sala": sala
-            })
-            salvar_dados({"reservas": reservas})
-            print(f"✔ Reserva realizada para sala {sala} no nome de {nome}!")
-            time.sleep(2)
-            print(txt_reserva())
-            return
-#-------------------------------------------------------------------------------------------------    
-    elif opcao == "3":
-        print("\n→ Consultando reserva...")
-        loading_fake(2)
-
-        reserva = next((r for r in reservas if r["usuario"] == nome), None)
+    elif menu == "Consultar reserva ativa":
+        reserva = usuario_tem_reserva(st.session_state.usuario)
 
         if reserva:
-            print(f"✔ Você reservou a sala {reserva['sala']}.")
+            render_box(f"Sua reserva ativa é a sala {reserva['sala']}.", "info")
         else:
-            print("✗ Você não possui reserva.")
-        time.sleep(2)
-        print(txt_reserva())
-#-------------------------------------------------------------------------------------------------    
-    elif opcao == "4":
-        print("\n→ Processo de cancelamento iniciado...")
-        loading_fake(2)
+            render_box("Você não possui reserva ativa.", "warning")
 
-        reserva = next((r for r in reservas if r["usuario"] == nome), None)
+    elif menu == "Cancelar reserva ativa":
+        reserva = usuario_tem_reserva(st.session_state.usuario)
 
         if reserva:
-            print(f"→ Reserva encontrada: Sala {reserva['sala']}")
-
-            escolha = input("→ Deseja cancelar? (s/n): ")
-
-            if escolha.lower() == "s":
-                loading_fake(3)
-                reservas.remove(reserva)
-                salvar_dados({"reservas": reservas})
-                print("✔ Reserva cancelada!")
-            else:
-                print("✗ Cancelamento abortado.")
+            render_box(f"Reserva encontrada para a sala {reserva['sala']}.", "info")
+            if st.button("Cancelar reserva", use_container_width=True):
+                ok, msg = cancelar_reserva(st.session_state.usuario)
+                if ok:
+                    set_flash("success", msg)
+                    st.rerun()
+                else:
+                    set_flash("error", msg)
+                    st.rerun()
         else:
-            print("✗ Você não possui reserva ativa.")
+            render_box("Você não possui reserva ativa.", "warning")
 
-        time.sleep(2)
-        print(txt_reserva())
-#-------------------------------------------------------------------------------------------------    
-    elif opcao == "5":
-        print("\n⊗ Encerrando serviço de consulta")
-        time.sleep(2)
-        return False
-    else:
-        print("\n✗ Opção inválida! Escolha uma opção válida!")
-        time.sleep(2)
-    
-
-
-
-# Serviço
-
-print("▶ Iniciando serviço GetLab")
-loading_fake(2)
-usuario_logado = None
-
-while usuario_logado is None:
-    print("\n1 - Login")
-    print("2 - Cadastro")
-    escolha = input("Escolha: ")
-
-    if escolha == "1":
-        usuario_logado = login()
-    elif escolha == "2":
-        cadastrar()
-    else:
-        print("Opção inválida")
-
-loading_fake(1)
-print("\n===== GETLAB =====\n")
-print(f"Bem vindo, {usuario_logado}!")
-rodando = True
-print(txt_reserva())
-while rodando:
-    print("1- Listar todas as salas")
-    print("2- Reservar uma sala")
-    print("3- Consultar reserva ativa")
-    print("4- Cancelar reserva ativa")
-    print("5- Encerrar serviço")
-    opcao = input("Escolha: ")
-    resposta = getlab(usuario_logado, opcao)
-    if resposta == False:
-        rodando = False
+    elif menu == "Exportar reservas CSV":
+        csv_data = exportar_reservas_csv()
+        st.download_button(
+            "Baixar CSV das reservas",
+            data=csv_data,
+            file_name="reservas_getlab.csv",
+            mime="text/csv",
+            use_container_width=True
+        )
