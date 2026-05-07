@@ -8,10 +8,6 @@
 # - O sistema deve ser curto e simples de se entender a fim de ser o mais rápido possível
 # - O sistema deve ser fácil de modificar para permitir a adição de novos exercícios no futuro
 
-# ====================================
-# CONVERSOR DE TEMPERATURA
-# Exercício - Engenharia de Software
-# ====================================
 import time
 
 print("🏋️ GymTrack — Validador de Treino")
