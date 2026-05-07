@@ -96,7 +96,7 @@ class Biblioteca:
             print(f"  📖 {emp['livro'].titulo} — {emp['leitor']}")
 
 
-# 🧪 TESTES
+# TESTES
 
 bib = Biblioteca()
 
