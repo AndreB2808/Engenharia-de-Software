@@ -1,4 +1,4 @@
-📚 Portfólio — Engenharia de Software | FIAP 2026
+# 📚 Portfólio — Engenharia de Software | FIAP 2026
 
 ## Sobre este repositório
 Este repositório relata e armazena a trajetória prática da disciplina de Engenharia de Software, servindo para armazenar todas as atividades e arquivos de aula em um único local acessível, assim comprovando a realização e comprometimento com cada uma.
