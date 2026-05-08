@@ -74,7 +74,7 @@ class Usuario:
 
 # Testes
 
-netflix = Plataforma("Netflix", "EUA")
+netflix = Plataforma("Netplix", "BR")
 catalogo = Catalogo("Filmes em Destaque", 0)
 filme1 = Filme("Oppenheimer", 180, "Drama")
 filme2 = Filme("Barbie", 114, "Comédia")
