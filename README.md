@@ -77,7 +77,7 @@ C
 ![](gifs/LD1.gif)
 ![](gifs/LD2.gif)
 
-## 📑 Documentos (Miro, repositório, vídeo)
-▶️ Quadro no Miro - https://miro.com/app/board/uXjVGrmeQUI=/?share_link_id=820200413870
+## 📑 Documentos (Miro, Trello, vídeo)
+▶️ Quadro no Miro - https://miro.com/app/board/uXjVHylqrhk=/?share_link_id=625445522410
 
-▶️ Caminho do repositório atual - https://github.com/AndreB2808/Engenharia-de-Software/tree/Projeto-GetLab
+▶️ Caminho do repositório atual - https://trello.com/invite/b/6a7bb5edfeea193e42ea61ec/ATTI5263728a668e956e6c7260d4b3060ab73E54EA04/projeto-servatio-🪙
