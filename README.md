@@ -1,16 +1,18 @@
-# Projeto ??? 🏫
+# Projeto Servatio 🪙
+### Do latim "Preservação" / "Guardando"​
+
+**TEMA: Aplicativo de planejamento financeiro e construção de patrimônio para jovens (controle de gastos, metas e investimentos)**
+
+
 
 ## ⚙️ Descrição do Problema
-A FIAP fornece disponibilidade aos alunos para poderem reservar salas e laboratórios para fins de estudo e aprendizado fora do horário de aula, desde que a sala esteja disponível para reservar. Mas e se um aluno decidir reservar uma sala, ir até a pessoa responsável pela reserva de salas e descobrir de última hora que a sala que ele desejava utilizar já foi reservada por outro aluno? Com isso vem a proposta do projeto GetLab.
+A
 
 ## 💡 Proposta
- O serviço GetLab seria uma simples aplicação integrada aos serviços de Website e Mobile da FIAP, que seria um jeito simples de fazer a reserva de laboratórios com antecedência e sem imprevistos. Ele informaria os usuários sobre quais salas estariam disponíveis para reserva, além das salas já reservadas junto do horário e dia da tal reserva. Após o usuário escolher a reserva, o sistema atualizaria para os outros usuários quanto a reserva feita. Após feita uma reserva, o mesmo usuário não pode realizar outra até que o tenha se passado o horário reservado, ou então caso o usuário tenha cancelado com até 5 horas de antecedência. Os usuários acessariam o sistema por meio do cadastro utilizando um RM de uma matrícula válida, sendo obrigatória para a utilização do serviço como forma de comprovação que é um aluno quem está utilizando do mesmo.
-
-## 🆕 Evoluções do projeto
- O projeto recebeu uma atualização significativa em relação a versão anterior, contando agora com cadastro e login de usuários, interface visual funcional em Streamlit (com opção de tema Light/Dark), organização em módulos ("auth", "models" e "views") e exportação de dados para formato csv.
+B
 
 ## 🖥️ Tecnologias Necessárias
- O sistema do serviço GetLab seria interligado ao banco de dados da FIAP para assim fazer a checagem de salas disponíveis para reserva e também de salas já reservadas por outras pessoas. Para o funcionamento do protótipo, o banco de dados será simulado em um arquivo JSON com capacidade de verificação automática de integridade do arquivo de dados, criando ou corrigindo o arquivo JSON quando necessário. O sistema realiza a checagem assim que o usuário acessa o serviço, coletando os dados dos outros arquivos presentes para mostrar as salas disponíveis e já reservadas. Após a reserva ser confirmada, o banco de dados é atualizado com a nova informação. Na versão atual, o protótipo utiliza "usuarios.json" e "reservas.json" para simular a coleta e o armazenamento de dados, além de utilizar o Streamlit para a interface visual e o módulo "csv" para exportação das reservas.
+C
 
 ## 🗂️ Estrutura do Projeto
 ```
