@@ -21,7 +21,8 @@ Para o funcionamento do serviço Servatio, será necessária a criação de uma 
     └── requirements.txt
 ```
 
-## 📹 Vídeo pitch
+## 📹 Mídia
+### Vídeo Pitch
 ![](gifs/gif1.gif)
 
 ## 📑 Documentos
