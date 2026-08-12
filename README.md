@@ -1,12 +1,7 @@
 # Projeto Servatio 🪙
 ### Do latim "Preservação" / "Guardando"​
-
-**TEMA: Aplicativo de planejamento financeiro e construção de patrimônio para jovens (controle de gastos, metas e investimentos)**
-
-
-
 ## ⚙️ Descrição do Problema
-A
+TEMA: Aplicativo de planejamento financeiro e construção de patrimônio para jovens (controle de gastos, metas e investimentos)
 
 ## 💡 Proposta
 B
@@ -16,68 +11,27 @@ C
 
 ## 🗂️ Estrutura do Projeto
 ```
-    Engenharia-De-Software/tree/Projeto-GetLab/
+    Engenharia-De-Software/tree/Projeto-Servatio/
     ├── src/
     │   ├── auth/
-    │   │   ├── cadastro.py
-    │   │   └── login.py
+    │   │   ├── a.py
+    │   │   └── b.py
     │   ├── data/
-    │   │   ├── usuarios.json
-    │   │   └── reservas.json
+    │   │   ├── c.json
+    │   │   └── d.json
     │   ├── models/
-    │   │   └── reserva_model.py
+    │   │   └── e.py
     │   ├── views/
-    │   │   └── interface_view.py
-    │   ├── main.py     
+    │   │   └── f.py
+    │   ├── g.py     
     ├── README.md
     └── requirements.txt
 ```
 
-## 🔌 Como Executar
-### Pré-requisitos
-    - Python 3
-    - Steamlit (caso esteja no Linux é necessário instalar dentro de uma venv) 
- Primeiramente é necessário baixar todos os arquivos do projeto. Após a instalação, e dentro de um programa como Visual Studio Code, abra a pasta principal que contêm todos os arquivos. Depois, abra um terminal novo e digite "pip install -r requirements.txt" para instalar as dependências requisitadas (neste caso sendo apenas o "Streamlit"), e então execute o projeto utilizando o comando "streamlit run src/app.py", que abrirá uma guia no navegador da aplicação, sendo possível cadastrar um usuário, fazer login e utilizar as funcionalidades do sistema diretamente pela interface visual.
+## 📹 Vídeo pitch
+- ![](gifs/gif1.gif)
 
-## 🪢 Funcionalidades Implementadas
-
-- ✔ Cadastro de usuários com RM e senha
-- ✔ Login de usuários cadastrados
-- ✔ Listagem de todas as salas com indicação de status (Disponível / Reservada)
-- ✔ Funcionalidade de reservar sala e armazenar nos dados
-- ✔ Bloqueio de múltiplas reservas por usuário
-- ✔ Bloqueio de reserva em salas já ocupadas
-- ✔ Consulta da reserva ativa do usuário
-- ✔ Cancelamento de reserva com confirmação do usuário
-- ✔ Persistência de dados utilizando um arquivo JSON ("usuarios.json" e "reservas.json")
-- ✔ Tratamento de erros ou ausência do arquivo JSON
-- ✔ Interface prática via Streamlit
-- ✔ Alternância entre tema Light/Dark
-- ✔ Exportação para formato csv das reservas ativas
-- ✕ Validação de antecedência para cancelamento de reserva
-- ✕ Validação de RM com base no banco de dados da FIAP
-- ✕ Criptografia dos dados cadastrados
-
-## ⭐ Diferencial
- 1. Tema Light/Dark
- Foi escolhida a implementação de uma opção de escolher entre tema claro e escuro para a interface, justamente pela implementação da interface básica. A alternância de tema melhora a experiência do usuário, principalmente em diferentes condições de iluminação, reduzindo fadiga visual além de vários usuário optarem pela utilização de apenas um dos temas, e tornando o sistema mais acessível, 
- 
- 2. Exportação de reservas para .csv 
- Além da mudança de tema, como bônus, há uma opção de baixar em formato csv a lista atual de reservas. A exportação em csv permite que os dados não fiquem restritos apenas na aplicação, com usuários podendo organizar, compartilhar ou analisar informações de reservas da forma que acharem mais apropriado.
-
-## 📹 Demonstração
-- Exemplo de cadastro e login
-![](gifs/gif1.gif)
-- Processo de reserva de sala
-![](gifs/gif2.gif)
-- Cancelamento de reserva
-![](gifs/gif3.gif)
-- Demonstração do tema Light/Dark
-  
-![](gifs/LD1.gif)
-![](gifs/LD2.gif)
-
-## 📑 Documentos (Miro, Trello, vídeo)
+## 📑 Documentos
 ▶️ Quadro no Miro - https://miro.com/app/board/uXjVHylqrhk=/?share_link_id=625445522410
 
-▶️ Caminho do repositório atual - https://trello.com/invite/b/6a7bb5edfeea193e42ea61ec/ATTI5263728a668e956e6c7260d4b3060ab73E54EA04/projeto-servatio-🪙
+▶️ Quadro do Trello - https://trello.com/invite/b/6a7bb5edfeea193e42ea61ec/ATTI5263728a668e956e6c7260d4b3060ab73E54EA04/projeto-servatio-🪙
