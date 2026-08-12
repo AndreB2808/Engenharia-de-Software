@@ -17,6 +17,7 @@ Para o funcionamento do serviço Servatio, será necessária a criação de uma 
     │   ├── data/
     │   ├── models/
     │   ├── views/
+    ├── media/
     ├── README.md
     └── requirements.txt
 ```
