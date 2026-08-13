@@ -1,5 +1,13 @@
 # Projeto Servatio 🪙
-### Do latim "Preservação" / "Guardando"​
+<p align="center">
+  <strong>Do latim "Preservação" / "Guardando"</strong>
+</p>
+
+<p align="center">
+  <img src="media/piglogo.png" width="250">
+</p>
+​
+
 ## ⚙️ Descrição do Problema
 Atualmente, muitos jovens que começam a possuir uma renda própria têm dificuldade para organizar seus gastos, estabelecer metas financeiras e separar dinheiro de forma consciente para construir uma reserva ou começar a investir pensando no futuro. A falta de uma visão clara sobre quanto recebem, quanto gastam e quanto podem guardar causa dificuldade no planejamento financeiro e na criação de hábitos de longo prazo. Com isso, surge a proposta do projeto Servatio.
 
