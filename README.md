@@ -31,7 +31,7 @@ Para o funcionamento do serviço Servatio, será necessária a criação de uma 
 ```
 
 ## 📹 Mídia
-### Vídeo Pitch
+### Vídeo Pitch de apresentação
 ![](media/vid1.mp4)
 
 ## 📑 Documentos
