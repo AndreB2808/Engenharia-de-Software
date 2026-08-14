@@ -18,6 +18,7 @@ O serviço Servatio seria uma aplicação voltada para o gerenciamento financeir
 Para o funcionamento do serviço Servatio, será necessária a criação de uma aplicação capaz de gerenciar as informações financeiras dos usuários, além de possibilitar a conexão com serviços financeiros externos. Durante o desenvolvimento do projeto, os dados e serviços necessários poderão ser simulados para representar o funcionamento da aplicação sem a necessidade de integrações reais. Porém, na fase atual do projeto, apenas a ideia / proposta será oferecida, sujeita a alterações futuras.
 
 ## 🗂️ Estrutura do Projeto
+### (Subjetiva a alterações)
 ```
     Engenharia-De-Software/tree/Projeto-Servatio/
     ├── src/
