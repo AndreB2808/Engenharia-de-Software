@@ -32,7 +32,7 @@ Para o funcionamento do serviço Servatio, será necessária a criação de uma 
 
 ## 📹 Mídia
 ### Vídeo pitch de apresentação
-![](media/vidP.mp4)
+https://github.com/user-attachments/assets/1cf880c7-55fd-47ec-81b5-1ed5537d8cd5
 
 ## 📑 Documentos
 ✴️ Quadro do Miro - https://miro.com/app/board/uXjVHylqrhk=/?share_link_id=625445522410
