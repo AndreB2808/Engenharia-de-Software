@@ -58,8 +58,9 @@ Primeiramente é necessário baixar todos os arquivos do projeto. Após a instal
 - ✔ Identificação automática de metas em andamento, concluídas ou fracassadas.
 - ✔ Exclusão de metas, devolvendo seus fundos reservados para os fundos não-alocados.
 - ✔ Navegação visual de protótipo com as futuras 
-- ✕ Áreas de Investimentos e Serviços conectados
+- ✕ Áreas de "Investimentos" e "Serviços conectados"
 - ✕ Armazenamento em banco de dados real
+- ✕ Visualização de fundos reais
 - ✕ Criptografia dos dados cadastrados
 
 ## 📹 Mídia
