@@ -18,14 +18,21 @@ O serviço Servatio seria uma aplicação voltada para o gerenciamento financeir
 Para o funcionamento do serviço Servatio, foram implementadas em uma aplicação protótipa realizada no Figma as funcionalidades de gerenciamento de informações financeiras dos usuários, além de dados mockados para fim de simular a interface do aplicativo, com saldo total, barras de progresso de metas e indicadores de investimentos, representando a utilização de um usuário real. Para acessar o protótipo basta chegar ao fim deste documento e acessar o link disponível em "Documentos".
 
 ## 🗂️ Estrutura do Projeto
-### (Subjetiva a alterações)
+
 ```
     Engenharia-De-Software/tree/Projeto-Servatio/
     ├── src/
     │   ├── auth/
+    │   │   ├── cadastro.py
+    │   │   └── login.py
     │   ├── data/
+    │   │   ├── usuarios.json
+    │   │   └── financeiro.json
     │   ├── models/
+    │   │   └── financeiro_model.py
     │   ├── views/
+    │   │   └── interface_view.py
+    │   └── main.py
     ├── README.md
     └── requirements.txt
 ```
