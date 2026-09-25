@@ -74,4 +74,4 @@ https://github.com/user-attachments/assets/1cf880c7-55fd-47ec-81b5-1ed5537d8cd5
 
 ✴️ Quadro do Miro - https://miro.com/app/board/uXjVHylqrhk=/?share_link_id=625445522410
 
-▶️ Quadro do Trello - [https://trello.com/b/MxOp62gb/projeto-servatio-%F0%9F%AA%99](https://trello.com/invite/b/6a7bb5edfeea193e42ea61ec/ATTI5263728a668e956e6c7260d4b3060ab73E54EA04/projeto-servatio-🪙) 
+▶️ Quadro do Trello (Atualizado) - [https://trello.com/b/MxOp62gb/projeto-servatio-%F0%9F%AA%99](https://trello.com/invite/b/6a7bb5edfeea193e42ea61ec/ATTI5263728a668e956e6c7260d4b3060ab73E54EA04/projeto-servatio-🪙) 
