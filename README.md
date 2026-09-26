@@ -67,7 +67,11 @@ Primeiramente é necessário baixar todos os arquivos do projeto. Após a instal
 ### Vídeo pitch de apresentação
 https://github.com/user-attachments/assets/1cf880c7-55fd-47ec-81b5-1ed5537d8cd5
 
-### Navegação do protótipo no Figma + ambiente de teste
+### Navegação da interface no Figma
+https://github.com/user-attachments/assets/25a52b53-010b-4f1d-98c0-423f8008074a
+
+### Utilização do protótipo em Python
+
 
 ## 📑 Documentos
 🆔 Protótipo no Figma - https://object-pitch-57581393.figma.site/
