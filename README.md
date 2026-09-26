@@ -15,7 +15,7 @@ Atualmente, muitos jovens que começam a possuir uma renda própria têm dificul
 O serviço Servatio seria uma aplicação voltada para o gerenciamento financeiro de jovens e adultos, permitindo o controle e visualização de receitas e despesas, a criação de metas financeiras e a separação de valores destinados a essas metas. Além disso, o sistema permitirá o acompanhamento de valores destinados a investimentos e disponibilizará diferentes opções de investimento, possibilitando que o usuário acompanhe sua evolução financeira em um único ambiente. O serviço também poderá ser conectado a outros serviços de finalidade monetária escolhidos pelo usuário, permitindo o monitoramento de suas movimentações financeiras sem que seja obrigatória a transferência de fundos diretamente para o Servatio.
 
 ## 🖥️ Tecnologias Utilizadas
-Para o funcionamento do serviço Servatio, foram implementadas em uma aplicação protótipa realizada no Figma as funcionalidades de gerenciamento de informações financeiras dos usuários, além de dados mockados para fim de simular a interface do aplicativo, com saldo total, barras de progresso de metas e indicadores de investimentos, representando a utilização de um usuário real. Para acessar o protótipo basta chegar ao fim deste documento e acessar o link disponível em "Documentos". Já o ambiente de testes utiliza o Streamlit para a interface visual, além de arquivos JSON para a simulação de cadastro e login de usuário (por meio do arquivo "usuarios.json"), e também para armazenamento de metas financeiras criadas pelo usuário (por meio do arquivo "financeiro.json"), sendo possível criar metas com base nas preferências escolhidas pelo usuário (como data limite, quantidade desjada, etc). Uma meta é considerada concluída quando o valor reservado alcança o objetivo. Ela é considerada fracassada somente quando a data limite já passou e o objetivo ainda não foi atingido.
+Para o funcionamento do serviço Servatio, foram implementadas em uma interface realizada no Figma as funcionalidades de gerenciamento de informações financeiras dos usuários, além de dados mockados para fim de simular a interface do aplicativo, com saldo total, barras de progresso de metas e indicadores de investimentos, representando a utilização de um usuário real. Para acessar a interface basta chegar ao fim deste documento e acessar o link do Figma disponível em "Documentos". Já o protótipo em Python utiliza o Streamlit para a interface visual, além de arquivos JSON para a simulação de cadastro e login de usuário (por meio do arquivo "usuarios.json"), e também para armazenamento de metas financeiras criadas pelo usuário (por meio do arquivo "financeiro.json"), sendo possível criar metas com base nas preferências escolhidas pelo usuário (como data limite, quantidade desjada, etc). Uma meta é considerada concluída quando o valor reservado alcança o objetivo. Ela é considerada fracassada somente quando a data limite já passou e o objetivo ainda não foi atingido.
 
 ## 🗂️ Estrutura do Projeto
 
@@ -71,7 +71,7 @@ https://github.com/user-attachments/assets/1cf880c7-55fd-47ec-81b5-1ed5537d8cd5
 https://github.com/user-attachments/assets/25a52b53-010b-4f1d-98c0-423f8008074a
 
 ### Utilização do protótipo em Python
-
+https://github.com/user-attachments/assets/f79bf128-1ba7-49f9-b5bc-f345f97edcd4
 
 ## 📑 Documentos
 🆔 Protótipo no Figma - https://object-pitch-57581393.figma.site/
