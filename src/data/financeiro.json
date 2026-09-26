@@ -1,8 +1,18 @@
 {
     "usuarios": {
         "Jon": {
-            "patrimonio": 0.0,
-            "metas": []
+            "patrimonio": 6000.0,
+            "metas": [
+                {
+                    "id": 1,
+                    "nome": "Presente do sobrinho",
+                    "valor": 3500.0,
+                    "emoji": "🎁",
+                    "data_limite": "2026-10-31",
+                    "observacao": "O videojogo do momento",
+                    "reservado": 2500.0
+                }
+            ]
         }
     }
 }
