@@ -21,8 +21,6 @@ Para o funcionamento do serviço Servatio, foram implementadas em uma interface 
 
 ```
     Engenharia-De-Software/tree/Projeto-Servatio/
-    ├── .streamlit/
-    │   └── config.toml
     ├── src/
     │   ├── assets/
     │   │   └── logo.png
@@ -45,7 +43,7 @@ Para o funcionamento do serviço Servatio, foram implementadas em uma interface 
 ### Pré-requisitos
     - Python 3
     - Steamlit (caso esteja no Linux é necessário instalar dentro de uma venv) 
-Primeiramente é necessário baixar todos os arquivos do projeto. Após a instalação, e dentro de um programa como Visual Studio Code, abra a pasta principal que contêm todos os arquivos. Depois, abra um terminal novo e digite "pip install -r requirements.txt" para instalar as dependências requisitadas (neste caso sendo apenas o "Streamlit"), e então execute o projeto utilizando o comando "streamlit run src/app.py", que abrirá uma guia no navegador da aplicação, sendo possível cadastrar um usuário, fazer login e utilizar as funcionalidades do sistema diretamente pela interface visual.
+Primeiramente é necessário baixar todos os arquivos do projeto. Após a instalação, e dentro de um programa como Visual Studio Code, abra a pasta principal que contêm todos os arquivos. Depois, abra um terminal novo e digite "pip install -r requirements.txt" para instalar as dependências requisitadas (neste caso sendo apenas o "Streamlit"), e então execute o projeto utilizando o comando "streamlit run src/main.py", que abrirá uma guia no navegador da aplicação, sendo possível cadastrar um usuário, fazer login e utilizar as funcionalidades do sistema diretamente pela interface visual.
 
 ## 🪢 Funcionalidades Implementadas
 
